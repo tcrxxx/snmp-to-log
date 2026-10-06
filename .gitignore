@@ -1,0 +1,11 @@
+# Logs
+logs/
+*.log
+
+# Arquivos de configuração locais com credenciais/IPs reais
+config/printer.conf
+
+# Temporários do sistema e editores
+.DS_Store
+*~
+*.swp

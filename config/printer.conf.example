@@ -1,0 +1,41 @@
+# ==============================================================================
+# Configurações do Coletor SNMP de Impressora
+# Copie este arquivo para 'printer.conf' e ajuste com os dados da sua rede.
+# ==============================================================================
+
+# Endereço IP ou hostname da impressora
+PRINTER_IP="192.168.1.50"
+
+# Comunidade SNMP (padrão na maioria das impressoras é 'public')
+SNMP_COMMUNITY="public"
+
+# Versão do SNMP (geralmente '2c' ou '1')
+SNMP_VERSION="2c"
+
+# Timeout em segundos e número de tentativas
+SNMP_TIMEOUT="3"
+SNMP_RETRIES="2"
+
+# ------------------------------------------------------------------------------
+# Contagem de Páginas
+# ------------------------------------------------------------------------------
+# OID para contagem total de páginas impressas (prtMarkerLifeCount)
+OID_PAGE_COUNT="1.3.6.1.2.1.43.10.2.1.4.1.1"
+
+# ------------------------------------------------------------------------------
+# Níveis de Tinta / Suprimentos
+# ------------------------------------------------------------------------------
+# Habilitar captura de % de tinta nos registros (true / false)
+LOG_INK_LEVELS="true"
+
+# OID proprietário Brother para consumíveis e manutenção (brInfoMaintenance)
+OID_BROTHER_MAINTENANCE="1.3.6.1.4.1.2435.2.3.9.4.2.1.5.5.8.0"
+
+# ------------------------------------------------------------------------------
+# Arquivo de Saída dos Logs
+# ------------------------------------------------------------------------------
+# Padrão em /opt/snmp-to-log/log/printer.log
+LOG_FILE="/opt/snmp-to-log/log/printer.log"
+
+# Registrar evento quando a impressora estiver offline / inacessível? (true / false)
+LOG_OFFLINE_EVENTS="false"
