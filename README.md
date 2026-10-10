@@ -144,7 +144,7 @@ Formato do log gravado:
 
 ---
 
-## ⏰ Agendamento no Cron (Hora a Hora)
+## ⏰ Agendamento no Cron (A Cada 5 Minutos)
 
 Use o helper para cadastrar no crontab do Raspberry Pi:
 
@@ -156,4 +156,4 @@ Para conferir o agendamento:
 ```bash
 ./scripts/setup_cron.sh --status
 ```
-*(Ele adiciona `0 * * * * /opt/snmp-to-log/scripts/printer_log.sh >/dev/null 2>&1`, rodando no minuto 0 de cada hora).*
+*(Ele adiciona `*/5 * * * * /opt/snmp-to-log/scripts/printer_log.sh >/dev/null 2>&1`, rodando a cada 5 minutos).*

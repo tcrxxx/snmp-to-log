@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # Script: setup_cron.sh
-# Objetivo: Gerenciar a entrada do cron para execução hora a hora
+# Objetivo: Gerenciar a entrada do cron para execução a cada 5 minutos
 # Uso:
 #   ./scripts/setup_cron.sh           # Instala a tarefa no crontab
 #   ./scripts/setup_cron.sh --remove  # Remove a tarefa do crontab
@@ -12,7 +12,7 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET_SCRIPT="$SCRIPT_DIR/printer_log.sh"
-CRON_SCHEDULE="0 * * * *"
+CRON_SCHEDULE="*/5 * * * *"
 CRON_ENTRY="$CRON_SCHEDULE $TARGET_SCRIPT >/dev/null 2>&1"
 CRON_TAG="# printer_log_cron_job"
 
@@ -48,7 +48,7 @@ case "$ACTION" in
         ;;
 
     --install|-i|*)
-        echo "Configurando agendamento hora a hora no crontab..."
+        echo "Configurando agendamento a cada 5 minutos no crontab..."
         if echo "$CURRENT_CRON" | grep -F "$TARGET_SCRIPT" >/dev/null 2>&1; then
             echo "[AVISO] O script já está agendado no crontab!"
             echo "Linha atual:"
@@ -66,6 +66,6 @@ case "$ACTION" in
 
         echo "[SUCESSO] Tarefa agendada com sucesso!"
         echo "Entrada adicionada: $CRON_ENTRY"
-        echo "A coleta será executada a cada minuto 0 de cada hora."
+        echo "A coleta será executada a cada 5 minutos."
         ;;
 esac
